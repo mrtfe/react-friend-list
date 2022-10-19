@@ -1,23 +1,22 @@
 import React from "react";
-import { RandomIdGenerator } from "./RandomIdGenerator";
 
 const friends = [
   {
-    id: RandomIdGenerator(),
+    id: 123,
     firstName: "John",
     lastName: "Smith",
     age: 32,
     city: "Kaunas",
   },
   {
-    id: RandomIdGenerator(),
+    id: 132,
     firstName: "Maria",
     lastName: "Hudghes",
     age: 28,
     city: "Siauliai",
   },
   {
-    id: RandomIdGenerator(),
+    id: 112,
     firstName: "Thomas",
     lastName: "Muiller",
     age: 33,
@@ -43,18 +42,3 @@ export function FriendCard(props) {
     </>
   );
 }
-
-// export function FriendCard(props) {
-//   return (
-//     <div className="card">
-//       <div>
-//         <p>ID: {props.id}</p>
-//         <p>First Name: {props.firstName}</p>
-//         <p>Last Name: {props.lastName}</p>
-//         <p>Age: {props.age}</p>
-//         <p>City: {props.city}</p>
-//       </div>
-//       <button className="delete-btn">Delete</button>
-//     </div>
-//   );
-// }
