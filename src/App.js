@@ -4,7 +4,7 @@ import React, { useState } from "react";
 // import { FriendCard } from "./FriendCard";
 
 function App() {
-  const friends = [
+  const [friends, setFriends] = useState(
     {
       id: 123,
       firstName: "John",
@@ -25,9 +25,8 @@ function App() {
       lastName: "Muiller",
       age: 33,
       city: "Vilnius",
-    },
-  ];
-
+    }
+  );
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
@@ -35,13 +34,14 @@ function App() {
 
   const handleAddClick = (firstName, lastName, age, city) => {
     console.log(friends);
-    return friends.push({
+    const newFriends = friends.setState({
       id: friends.length,
       firstName: firstName,
       lastName: lastName,
       age: age,
       city: city,
     });
+    setFriends([...friends, newFriends]);
   };
 
   return (
@@ -104,18 +104,9 @@ function App() {
                 <p>Age: {friend.age}</p>
                 <p>City: {friend.city}</p>
               </div>
-
               <button className="delete-btn">Delete</button>
             </div>
           ))}
-          {/* <div className="card">
-            <p>ID: {1}</p>
-            <p>First Name: {firstName}</p>
-            <p>Last Name: {lastName}</p>
-            <p>Age: {age}</p>
-            <p>City: {city}</p>
-            <button className="delete-btn">Delete</button>
-          </div> */}
         </div>
       </div>
     </>
