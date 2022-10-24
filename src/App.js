@@ -4,7 +4,7 @@ import React, { useState } from "react";
 // import { FriendCard } from "./FriendCard";
 
 function App() {
-  const [friends, setFriends] = useState(
+  const [friends, setFriends] = useState([
     {
       id: 123,
       firstName: "John",
@@ -25,23 +25,31 @@ function App() {
       lastName: "Muiller",
       age: 33,
       city: "Vilnius",
-    }
-  );
+    },
+  ]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState("");
   const [city, setCity] = useState("");
 
-  const handleAddClick = (firstName, lastName, age, city) => {
-    console.log(friends);
-    const newFriends = friends.setState({
-      id: friends.length,
+  const RandomIdGenerator = () => {
+    return Math.floor(Math.random() * 1000000000);
+  };
+
+  const handleAddFriendClick = (e) => {
+    e.preventDefault();
+    const newFriend = {
+      id: RandomIdGenerator(),
       firstName: firstName,
       lastName: lastName,
       age: age,
       city: city,
-    });
-    setFriends([...friends, newFriends]);
+    };
+    setFriends([...friends, newFriend]);
+  };
+
+  const handleDeleteClick = (e) => {
+    setFriends(friends.filter((friend) => String(friend.id) !== e.target.id));
   };
 
   return (
@@ -86,14 +94,10 @@ function App() {
               onChange={(e) => setCity(e.target.value)}
             ></input>
           </div>
-          <button type="submit" onClick={handleAddClick}>
+          <button type="submit" onClick={handleAddFriendClick}>
             Add Friend
           </button>
         </form>
-        <p>{firstName}</p>
-        <p>{lastName}</p>
-        <p>{age}</p>
-        <p>{city}</p>
         <div className="cards-wrapper">
           {friends.map((friend) => (
             <div className="card">
@@ -104,7 +108,13 @@ function App() {
                 <p>Age: {friend.age}</p>
                 <p>City: {friend.city}</p>
               </div>
-              <button className="delete-btn">Delete</button>
+              <button
+                className="delete-btn"
+                onClick={handleDeleteClick}
+                id={friend.id}
+              >
+                Delete
+              </button>
             </div>
           ))}
         </div>
