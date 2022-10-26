@@ -15,7 +15,7 @@ code {
 form {
   display: flex;
   gap: 20px;
-  max-width: 100%;
+  max-width: 700px;
 }
 
 .container {
@@ -66,7 +66,6 @@ button {
   font-size: 20px;
   color: grey;
   font-weight: 600;
-  display: none;
 }
 
 .cards-wrapper {
@@ -109,11 +108,14 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
   }
 
   .cards-wrapper {
     display: flex;
     flex-direction: column;
+  }
+
+  input {
+    max-width: 100%;
   }
 }
